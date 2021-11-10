@@ -1,13 +1,26 @@
 const db = require("../../db");
 const { validateEmail } = require("../../global/validations");
 const bcrypt = require("bcrypt");
+const { sendMailOnRegister } = require("../../mail");
 
 const AuthController = {
   register: async (req, res) => {
-    const { email, password, status, created_on, last_login, username } =
-      req.body;
+    const {
+      email,
+      password,
+      created_on,
+      last_login,
+      first_name,
+      last_name,
+      status,
+      activated,
+      temp_id,
+      role,
+    } = req.body;
 
     const hashedPassword = await bcrypt.hash(password, 5);
+    const tempId = Math.floor(100000 + Math.random() * 900000);
+    const currDate = new Date();
 
     // if email and password exist
     if ((!email, !password)) {
@@ -44,10 +57,24 @@ const AuthController = {
             });
           } else {
             db.query(
-              "insert into accounts(email, password, status, created_on, last_login, username) values ($1, $2, $3, $4, $5, $6)",
-              [email, hashedPassword, status, created_on, last_login, username],
+              "insert into accounts(email, password, created_on, last_login, first_name, last_name, status, activated, temp_id, role) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)",
+              [
+                email,
+                hashedPassword,
+                currDate,
+                currDate,
+                first_name,
+                last_name,
+                status,
+                activated,
+                tempId,
+                role,
+              ],
               (err, result) => {
                 if (err) throw err;
+
+                sendMailOnRegister({ user_email: email, temp_id: tempId });
+
                 return res.send("Successfully created.");
               }
             );
@@ -121,6 +148,33 @@ const AuthController = {
         }
       });
     }
+  },
+
+  activateAccount: (req, res) => {
+    const { email, tempId } = req.body;
+
+    db.query(
+      `select email, temp_id, id from accounts where email = '${email}'`,
+      (err, result) => {
+        if (err) throw err;
+
+        if (result.rows.length == 0) {
+          res.send({ status: 0, msg: "No user with this email." });
+        } else {
+          const temp_id = result.rows[0].temp_id;
+
+          if (temp_id == tempId) {
+            db.query(
+              `update accounts set activated = true, status = true, temp_id = null where id = ${result.rows[0].id}`
+            );
+
+            res.send({ status: 1, msg: "Successful activated the account." });
+          } else {
+            res.send({ status: 0, msg: "Invalid code." });
+          }
+        }
+      }
+    );
   },
 };
 
