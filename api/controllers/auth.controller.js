@@ -5,38 +5,20 @@ const { sendMailOnRegister } = require("../../mail");
 
 const AuthController = {
   register: async (req, res) => {
-    const {
-      email,
-      password,
-      created_on,
-      last_login,
-      first_name,
-      last_name,
-      status,
-      activated,
-      temp_id,
-      role,
-    } = req.body;
+    const { email, password, created_on, last_login, status, activated, role } =
+      req.body;
 
     const hashedPassword = await bcrypt.hash(password, 5);
     const tempId = Math.floor(100000 + Math.random() * 900000);
-    const currDate = new Date();
 
     // if email and password exist
     if ((!email, !password)) {
-      res.send({ status: 0, msg: "Enter email and password" });
+      return res.send({ status: 0, msg: "Enter email and password" });
     }
 
-    // email length > 5 char
-    if (email.length < 6) {
-      res.send({
-        status: 0,
-        msg: "Email should be not less than 5 characters",
-      });
-    }
     // password length > 5 char
     if (password.length < 6) {
-      res.send({
+      return res.send({
         status: 0,
         msg: "Password should be not less than 5 characters",
       });
@@ -51,20 +33,18 @@ const AuthController = {
           if (err) throw err;
 
           if (result.rows != 0) {
-            return res.send({
+            res.send({
               status: 0,
               msg: "You are registered before.",
             });
           } else {
             db.query(
-              "insert into accounts(email, password, created_on, last_login, first_name, last_name, status, activated, temp_id, role) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)",
+              "insert into accounts(email, password, created_on, last_login, status, activated, temp_id, role) values ($1, $2, $3, $4, $5, $6, $7, $8)",
               [
                 email,
                 hashedPassword,
-                currDate,
-                currDate,
-                first_name,
-                last_name,
+                created_on,
+                last_login,
                 status,
                 activated,
                 tempId,
@@ -75,7 +55,11 @@ const AuthController = {
 
                 sendMailOnRegister({ user_email: email, temp_id: tempId });
 
-                return res.send("Successfully created.");
+                res.send({
+                  status: 1,
+                  msg: "Successfully created.",
+                  temp_id: tempId,
+                });
               }
             );
           }
@@ -83,7 +67,7 @@ const AuthController = {
       );
     } else {
       // email validation error
-      return res.send({
+      res.send({
         status: 0,
         msg: "You have entered an invalid email address!",
       });
