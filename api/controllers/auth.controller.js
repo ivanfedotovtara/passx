@@ -55,11 +55,20 @@ const AuthController = {
 
                 sendMailOnRegister({ user_email: email, temp_id: tempId });
 
-                res.send({
-                  status: 1,
-                  msg: "Successfully created.",
-                  temp_id: tempId,
-                });
+                db.query(
+                  `select id from accounts where email = '${email}' and password = '${hashedPassword}' and created_on = '${created_on}'`,
+                  (err, result) => {
+                    if (err) throw err;
+                    const user_id = result.rows[0].id;
+
+                    res.send({
+                      status: 1,
+                      msg: "Successfully created.",
+                      temp_id: tempId,
+                      user_id,
+                    });
+                  }
+                );
               }
             );
           }
