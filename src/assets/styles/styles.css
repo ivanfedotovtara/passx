@@ -85,3 +85,97 @@ button:focus {
   border: none;
   border-radius: 10px;
 }
+.dashboard {
+  height: 100%;
+  min-height: 100vh;
+}
+.dashboard__header {
+  height: 40vh;
+  background: #e1d8f8;
+  background: linear-gradient(346deg, #e1d8f8 35%, #b2eef1 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.dashboard__header-count {
+  font-weight: 700;
+  font-size: 50px;
+}
+.dashboard__header-status {
+  font-weight: 300;
+  font-size: 23px;
+}
+.dashboard__menu {
+  background-color: #fff;
+  position: absolute;
+  width: 500px;
+  display: flex;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  bottom: -60px;
+}
+.dashboard__menu-section {
+  width: 50%;
+}
+.dashboard__menu-section-container {
+  display: flex;
+  align-items: center;
+}
+.dashboard__menu-section-img {
+  background-color: #F0F1FA;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.dashboard__menu-section-img img {
+  width: 15px;
+}
+.dashboard__menu-section h4 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.dashboard__menu-section span {
+  font-size: 14px;
+  font-weight: 100;
+  color: #777;
+}
+.dashboard__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 60vh;
+  padding-bottom: 200px;
+}
+.dashboard__categories {
+  padding-top: 50px;
+}
+.dashboard__categories-item {
+  height: 150px;
+  width: 150px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  cursor: pointer;
+  margin-top: 100px;
+}
+.dashboard__categories-item span {
+  color: #FDC62F;
+  font-size: 30px;
+}
+.dashboard__categories-item h5 {
+  color: #000;
+  font-weight: 400;
+  font-size: 17px;
+}
+.dashboard__categories-item:hover h5 {
+  font-weight: 700;
+}

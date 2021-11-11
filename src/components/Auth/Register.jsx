@@ -54,6 +54,7 @@ export default function Register() {
         const status = data.status;
         const msg = data.msg;
         const temp_id = data.temp_id;
+        const user_id = data.user_id;
 
         if (status == 0) {
           console.log(data);
@@ -66,6 +67,7 @@ export default function Register() {
               activated: false,
               role: 0,
               temp_id,
+              user_id,
             })
           );
           history.push("/activate");

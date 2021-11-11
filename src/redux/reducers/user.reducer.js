@@ -2,6 +2,7 @@ const SET_USER = "SET_USER";
 const UPDATE_ACTIVATION = "UPDATE_ACTIVATION";
 
 const initialUserState = {
+  id: null,
   email: "",
   role: null,
   status: null,
@@ -13,6 +14,7 @@ const userReducer = (state = initialUserState, action) => {
   switch (action.type) {
     case SET_USER:
       return {
+        id: action.payload.user_id,
         email: action.payload.email,
         role: action.payload.role,
         status: action.payload.status,

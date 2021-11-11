@@ -1,9 +1,15 @@
 import React from "react";
+import Categories from "../../components/Dashboard/Categories";
+import Header from "../../components/Dashboard/Header";
 
 export default function Dashboard() {
   return (
     <div className="dashboard">
-      <h1>Dashboard</h1>
+      <Header />
+
+      <div className="dashboard__content">
+        <Categories />
+      </div>
     </div>
   );
 }
