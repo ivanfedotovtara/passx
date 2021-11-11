@@ -1,0 +1,101 @@
+@authColor: #6B4DD1;
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+input:focus,
+button:focus {
+    outline: none;
+}
+
+.auth {
+    background-color: @authColor;
+    max-height: 100vh;
+
+    &__content {
+        min-height: 100vh;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &-form {
+            background-color: @authColor;
+            height: 80vh;
+            width: 90%;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            border-radius: 30px;
+
+            &-control {
+                background-color: #fff;
+                width: 100%;
+                height: 80vh;
+                border-radius: 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    &-greeting {
+        padding-bottom: 10px;
+    }
+
+    &-link {
+        text-align: center;
+        padding-top: 20px;
+        color: @authColor;
+        text-decoration: none;
+
+        &:hover {
+            color: @authColor;
+        }
+    }
+}
+
+.login,
+.register {
+    & h5 {
+        padding-bottom: 20px;
+        text-align: center;
+
+        & span {
+            color: @authColor;
+            font-weight: 600;
+        }
+    }
+
+    & form {
+        display: flex;
+        flex-direction: column;
+
+        & input {
+            width: 350px;
+            height: 50px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #777;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+
+        & button {
+            background-color: @authColor;
+            color: #fff;
+            height: 50px;
+            border: none;
+            border-radius: 10px;
+        }
+    }
+}

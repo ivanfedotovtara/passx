@@ -1,0 +1,87 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+input:focus,
+button:focus {
+  outline: none;
+}
+.auth {
+  background-color: #6b4dd1;
+  max-height: 100vh;
+}
+.auth__content {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.auth__content-form {
+  background-color: #6b4dd1;
+  height: 80vh;
+  width: 90%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-radius: 30px;
+}
+.auth__content-form-control {
+  background-color: #fff;
+  width: 100%;
+  height: 80vh;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.auth-greeting {
+  padding-bottom: 10px;
+}
+.auth-link {
+  text-align: center;
+  padding-top: 20px;
+  color: #6b4dd1;
+  text-decoration: none;
+}
+.auth-link:hover {
+  color: #6b4dd1;
+}
+.login h5,
+.register h5 {
+  padding-bottom: 20px;
+  text-align: center;
+}
+.login h5 span,
+.register h5 span {
+  color: #6b4dd1;
+  font-weight: 600;
+}
+.login form,
+.register form {
+  display: flex;
+  flex-direction: column;
+}
+.login form input,
+.register form input {
+  width: 350px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #777;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+.login form button,
+.register form button {
+  background-color: #6b4dd1;
+  color: #fff;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+}
