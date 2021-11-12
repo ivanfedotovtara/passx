@@ -204,14 +204,18 @@ select:focus {
   padding-left: 10px;
   font-weight: 300;
 }
-.dashboard__categories-modal form select {
-  background-color: #F5F5F9;
-  border: none;
+.dashboard__categories-modal form button {
+  background-color: #6b4dd1;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   border-radius: 10px;
-  height: 50px;
-  width: 250px;
-  padding-left: 10px;
-  font-weight: 300;
+  border: none;
 }
 .dashboard__categories-modal-item {
   display: flex;
@@ -252,4 +256,24 @@ select:focus {
 }
 .ReactModal__Overlay--before-close {
   opacity: 0;
+}
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border-width: 0 !important;
+}
+.css-qkv3hr-MuiAutocomplete-root .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
+  display: none !important;
+}
+.css-16awh2u-MuiAutocomplete-root .MuiOutlinedInput-root .MuiAutocomplete-endAdornment {
+  display: none !important;
+}
+.css-16awh2u-MuiAutocomplete-root .MuiOutlinedInput-root {
+  padding: 0 !important;
+}
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  padding-right: 32px;
+  background-color: #F5F5F9;
+  border: none;
+  border-radius: 10px;
+  padding-left: 10px;
+  font-weight: 300;
 }

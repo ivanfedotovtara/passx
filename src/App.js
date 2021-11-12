@@ -27,10 +27,6 @@ export default function App() {
       );
     }
 
-    if (userState.temp_id && !userState.activated) {
-      <Route exact path="/activate" component={Activation} />;
-    }
-
     return <Route exact path="/dashboard" component={Dashboard} />;
   }
   return (
@@ -43,9 +39,8 @@ export default function App() {
             <Redirect to="/register" />
           )}
         </Route>
-
+        <Route exact path="/activate" component={Activation} />;
         {/* <Route component={PageNotFound} /> */}
-
         <AuthRouter />
       </Switch>
     </Router>
