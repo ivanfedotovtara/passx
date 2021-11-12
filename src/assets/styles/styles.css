@@ -9,7 +9,9 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 input:focus,
-button:focus {
+button:focus,
+option:focus,
+select:focus {
   outline: none;
 }
 .auth {
@@ -178,4 +180,76 @@ button:focus {
 }
 .dashboard__categories-item:hover h5 {
   font-weight: 700;
+  color: #6b4dd1;
+}
+.dashboard__categories-modal {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.dashboard__categories-modal form {
+  display: flex;
+  flex-direction: column;
+}
+.dashboard__categories-modal form span {
+  font-size: 17px;
+  font-weight: 700;
+  padding-bottom: 7px;
+}
+.dashboard__categories-modal form input {
+  background-color: #F5F5F9;
+  border: none;
+  border-radius: 10px;
+  height: 50px;
+  width: 250px;
+  padding-left: 10px;
+  font-weight: 300;
+}
+.dashboard__categories-modal form select {
+  background-color: #F5F5F9;
+  border: none;
+  border-radius: 10px;
+  height: 50px;
+  width: 250px;
+  padding-left: 10px;
+  font-weight: 300;
+}
+.dashboard__categories-modal-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+.dashboard__categories-modal-item div {
+  display: flex;
+}
+.dashboard__firstEntry {
+  text-align: center;
+}
+.dashboard__firstEntry h2 {
+  margin-bottom: 20px;
+}
+.dashboard__firstEntry button {
+  color: #000;
+  text-decoration: none;
+  font-size: 30px;
+  color: #6b4dd1;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 10px;
+  border: none;
+}
+.dashboard__firstEntry button:hover {
+  color: #6b4dd1;
+}
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+.ReactModal__Overlay--before-close {
+  opacity: 0;
 }
