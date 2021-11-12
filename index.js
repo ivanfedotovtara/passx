@@ -6,6 +6,7 @@ const cors = require("cors");
 // Routers
 const AuthRouter = require("./api/routes/auth.routes");
 const CategoriesRouter = require("./api/routes/categories.routes");
+const PasswordsRouter = require("./api/routes/passwords.routes");
 
 // database
 require("./db");
@@ -25,6 +26,7 @@ app.use(express.json());
 // api
 app.use("/api/auth", AuthRouter);
 app.use("/api/categories", CategoriesRouter);
+app.use("/api/passwords", PasswordsRouter);
 
 // app starts
 app.listen(port, () => {
