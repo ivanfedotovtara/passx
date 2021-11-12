@@ -86,8 +86,6 @@ const AuthController = {
   login: async (req, res) => {
     const { email, password } = req.body;
 
-    async function comparePassword(userPassword) {}
-
     // if email and password exist
     if ((!email, !password)) {
       res.send({ status: 0, msg: "Enter email and password" });
@@ -109,10 +107,11 @@ const AuthController = {
     }
 
     if (validateEmail(email)) {
-      const sql = `select email, password from accounts where email = '${email}'`;
+      const sql = `select email, password, id from accounts where email = '${email}'`;
 
       db.query(sql, (err, result) => {
         if (err) throw err;
+        const user_id = result.rows[0].id;
 
         if (result.rows.length != 0) {
           bcrypt.compare(
@@ -124,6 +123,7 @@ const AuthController = {
                 res.send({
                   status: 1,
                   msg: "Successful login",
+                  user_id,
                 });
               } else {
                 res.send({

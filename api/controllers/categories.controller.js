@@ -17,17 +17,21 @@ const CategoriesController = {
   createCategory: (req, res) => {
     const { title, icon, color, user_id } = req.body;
 
-    db.query(
-      `
+    if (title.length < 1) {
+      res.send({ status: 0, msg: "Please, enter title." });
+    } else {
+      db.query(
+        `
       insert into categories(title, icon, color, user_id) values('${title}', '${icon}', '${color}', ${Number(
-        user_id
-      )})`,
-      (err, result) => {
-        if (err) throw err;
+          user_id
+        )})`,
+        (err, result) => {
+          if (err) throw err;
 
-        res.send({ status: 1, msg: "Successfully created new category." });
-      }
-    );
+          res.send({ status: 1, msg: "Successfully created new category." });
+        }
+      );
+    }
   },
 };
 
